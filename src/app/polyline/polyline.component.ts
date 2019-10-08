@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-polyline',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./polyline.component.scss']
 })
 export class PolylineComponent implements OnInit {
+
+  @ViewChild('svg', { static: true })
+  svg: SVGElement;
 
   constructor() { }
 
