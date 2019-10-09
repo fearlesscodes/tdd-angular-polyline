@@ -1,12 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PolylineComponent } from './polyline.component';
+import {DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser";
 
 describe('PolylineComponent', () => {
   let component: PolylineComponent;
   let fixture: ComponentFixture<PolylineComponent>;
-  let svgDebugElement: SVGElement;
-  let polylineDebugElement: SVGPolylineElement;
+  let svgDebugElement: DebugElement;
+  let polylineDebugElement: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,8 +21,8 @@ describe('PolylineComponent', () => {
     fixture = TestBed.createComponent(PolylineComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    svgDebugElement = component.svg;
-    polylineDebugElement = component.poly;
+    svgDebugElement = fixture.debugElement.query(By.css('svg'));
+    polylineDebugElement = fixture.debugElement.query(By.css('polyline'));
   });
 
   it('should create', () => {

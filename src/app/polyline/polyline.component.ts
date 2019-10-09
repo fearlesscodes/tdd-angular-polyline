@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-polyline',
@@ -8,10 +8,10 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 export class PolylineComponent implements OnInit {
 
   @ViewChild('svg', { static: true })
-  svg: SVGElement;
+  svg: ElementRef;
 
   @ViewChild('poly', { static: true })
-  poly: SVGPolylineElement;
+  poly: ElementRef;
 
   constructor() { }
 
