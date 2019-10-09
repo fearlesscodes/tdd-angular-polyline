@@ -29,5 +29,6 @@ describe('PolylineComponent', () => {
 
   it('contain a svg and polyline element', () => {
     expect(svgDebugElement).toBeDefined();
+    expect(polylineDebugElement).toBeDefined();
   });
 });

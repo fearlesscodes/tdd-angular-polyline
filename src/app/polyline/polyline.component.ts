@@ -10,6 +10,9 @@ export class PolylineComponent implements OnInit {
   @ViewChild('svg', { static: true })
   svg: SVGElement;
 
+  @ViewChild('poly', { static: true })
+  poly: SVGPolylineElement;
+
   constructor() { }
 
   ngOnInit() {
