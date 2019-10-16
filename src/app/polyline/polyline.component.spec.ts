@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 
 import { PolylineComponent } from './polyline.component';
-import {DebugElement} from "@angular/core";
-import {By} from "@angular/platform-browser";
+import {DebugElement} from '@angular/core';
+import {By} from '@angular/platform-browser';
 
 describe('PolylineComponent', () => {
   let component: PolylineComponent;
@@ -34,10 +34,10 @@ describe('PolylineComponent', () => {
     expect(polylineDebugElement).toBeDefined();
   });
 
-  it('Expect number of points in the polyline element', () => {
+  it('Expect number of points in the polyline element', async(() => {
     // Creating SVGPoints
     const svgPoints = [];
-    const svg: SVGSVGElement = svgDebugElement.nativeElement
+    const svg: SVGSVGElement = svgDebugElement.nativeElement;
     const point1 = svg.createSVGPoint();
     point1.x = 100;
     point1.y = 100;
@@ -46,8 +46,10 @@ describe('PolylineComponent', () => {
     point2.y = 100;
     svgPoints.push(point1, point2);
     component.points = svgPoints;
+    component.ngOnInit();
+
     const polyline: SVGPolylineElement = polylineDebugElement.nativeElement;
     // Important part of this test
     expect(polyline.points.length).toBe(2);
-  });
+  }));
 });

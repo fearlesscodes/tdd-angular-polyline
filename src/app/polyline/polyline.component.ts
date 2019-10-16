@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-polyline',
@@ -6,6 +6,9 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
   styleUrls: ['./polyline.component.scss']
 })
 export class PolylineComponent implements OnInit {
+
+  @Input()
+  points: SVGPoint[] = [];
 
   @ViewChild('svg', { static: true })
   svg: ElementRef;
@@ -16,6 +19,11 @@ export class PolylineComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    const polyNativeElement: SVGPolylineElement = this.poly.nativeElement;
+    this.points.forEach(point => {
+      polyNativeElement.points.appendItem(point);
+    });
+
   }
 
 }
