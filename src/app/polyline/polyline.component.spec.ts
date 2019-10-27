@@ -52,4 +52,18 @@ describe('PolylineComponent', () => {
     // Important part of this test
     expect(polyline.points.length).toBe(2);
   }));
+
+  fit('Expect number of points in the polyline element using default DOMPoint objects', async(() => {
+    // Creating DomPoints
+    const domPoints = [];
+    const point1 = new DOMPoint(100, 100);
+    const point2 = new DOMPoint(100, 100);
+    domPoints.push(point1, point2);
+    component.points = domPoints;
+    component.ngOnInit();
+
+    const polyline: SVGPolylineElement = polylineDebugElement.nativeElement;
+    // Important part of this test
+    expect(polyline.points.length).toBe(2);
+  }));
 });

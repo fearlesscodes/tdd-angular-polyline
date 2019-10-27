@@ -8,7 +8,7 @@ import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 export class PolylineComponent implements OnInit {
 
   @Input()
-  points: SVGPoint[] = [];
+  points: DOMPoint[] = [];
 
   @ViewChild('svg', { static: true })
   svg: ElementRef;
@@ -20,8 +20,12 @@ export class PolylineComponent implements OnInit {
 
   ngOnInit() {
     const polyNativeElement: SVGPolylineElement = this.poly.nativeElement;
+    const svgGenerator: SVGSVGElement = this.svg.nativeElement;
     this.points.forEach(point => {
-      polyNativeElement.points.appendItem(point);
+      const svgPoint = svgGenerator.createSVGPoint();
+      svgPoint.x = point.x;
+      svgPoint.y = point.y;
+      polyNativeElement.points.appendItem(svgPoint);
     });
 
   }
